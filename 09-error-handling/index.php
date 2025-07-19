@@ -4,118 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Error Handling</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .error-output {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        .warning {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            color: #856404;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -145,7 +34,7 @@
                 <p>PHP has different types of errors:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // 1. Parse Errors (Fatal) - Syntax errors
 // $variable = "Hello World"  // Missing semicolon
 
@@ -163,17 +52,20 @@ echo $undefined_variable;  // Undefined variable notice
 
 // 6. User Errors - Custom errors
 trigger_error("This is a custom error", E_USER_ERROR);
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
                     <strong>Error Types:</strong><br>
-                    ✅ <strong>Parse Errors:</strong> Syntax errors that prevent script execution<br>
-                    ✅ <strong>Fatal Errors:</strong> Critical errors that stop execution<br>
-                    ✅ <strong>Warnings:</strong> Non-fatal errors that don't stop execution<br>
-                    ✅ <strong>Notices:</strong> Minor issues and suggestions<br>
-                    ✅ <strong>Deprecated:</strong> Features that will be removed in future versions<br>
-                    ✅ <strong>User Errors:</strong> Custom errors triggered by developers<br>
+                    <?php
+                    // Safe demonstration: Suppress actual errors for display
+                    echo "✅ <strong>Parse Errors:</strong> Syntax errors that prevent script execution<br>";
+                    echo "✅ <strong>Fatal Errors:</strong> Critical errors that stop execution<br>";
+                    echo "✅ <strong>Warnings:</strong> Non-fatal errors that don't stop execution<br>";
+                    echo "✅ <strong>Notices:</strong> Minor issues and suggestions<br>";
+                    echo "✅ <strong>Deprecated:</strong> Features that will be removed in future versions<br>";
+                    echo "✅ <strong>User Errors:</strong> Custom errors triggered by developers<br>";
+                    ?>
                 </div>
             </div>
 
@@ -182,7 +74,7 @@ trigger_error("This is a custom error", E_USER_ERROR);
                 <p>You can configure how PHP reports errors:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Display all errors (development)
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -207,7 +99,7 @@ function customErrorHandler($errno, $errstr, $errfile, $errline) {
 }
 
 set_error_handler("customErrorHandler");
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -226,7 +118,7 @@ set_error_handler("customErrorHandler");
                 <p>Exception handling with try-catch blocks:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Custom exception class
 class CustomException extends Exception {
     public function errorMessage() {
@@ -248,30 +140,15 @@ try {
     echo "Result: $result&lt;br&gt;";
     
     $result = divideNumbers(10, 0); // This will throw an exception
-    echo "This won't be executed&lt;br&gt;";
-    
+    echo "This line won't execute&lt;br&gt;";
 } catch (CustomException $e) {
     echo "Custom Exception: " . $e->errorMessage() . "&lt;br&gt;";
 } catch (Exception $e) {
     echo "General Exception: " . $e->getMessage() . "&lt;br&gt;";
 } finally {
-    echo "This code always executes&lt;br&gt;";
+    echo "This always executes&lt;br&gt;";
 }
-
-// Multiple exceptions
-try {
-    $file = fopen("nonexistent.txt", "r");
-    if (!$file) {
-        throw new Exception("Could not open file");
-    }
-    
-    $content = fread($file, 100);
-    fclose($file);
-    
-} catch (Exception $e) {
-    echo "File error: " . $e->getMessage() . "&lt;br&gt;";
-}
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -293,14 +170,13 @@ try {
                     try {
                         $result = divideNumbers(10, 2);
                         echo "Result: $result<br>";
-                        
+                        // The next line will throw an exception, caught below
                         $result = divideNumbers(10, 0);
                         echo "This won't be executed<br>";
-                        
                     } catch (CustomException $e) {
-                        echo "Custom Exception: " . $e->errorMessage() . "<br>";
+                        echo "Custom Exception: " . htmlspecialchars($e->errorMessage()) . "<br>";
                     } catch (Exception $e) {
-                        echo "General Exception: " . $e->getMessage() . "<br>";
+                        echo "General Exception: " . htmlspecialchars($e->getMessage()) . "<br>";
                     } finally {
                         echo "This code always executes<br>";
                     }
@@ -313,7 +189,7 @@ try {
                 <p>Logging errors for debugging and monitoring:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Basic error logging
 error_log("This is a test error message");
 
@@ -350,7 +226,7 @@ try {
         'line' => $e->getLine()
     ]);
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -359,23 +235,22 @@ try {
                     function logError($message, $level = 'ERROR', $context = []) {
                         $timestamp = date('Y-m-d H:i:s');
                         $logMessage = "[$timestamp] [$level] $message";
-                        
                         if (!empty($context)) {
                             $logMessage .= " Context: " . json_encode($context);
                         }
-                        
                         // In a real application, this would write to a file
-                        echo "Logged: $logMessage<br>";
+                        echo "Logged: " . htmlspecialchars($logMessage) . "<br>";
                     }
-
                     logError("User authentication failed", "ERROR", [
                         'user_id' => 123,
                         'ip_address' => '192.168.1.1',
                         'attempt_time' => time()
                     ]);
-
+                    // Demonstrate error logging without causing a fatal error
                     try {
-                        $result = 10 / 0;
+                        if (0 === 0) {
+                            throw new Exception("Division by zero error");
+                        }
                     } catch (Exception $e) {
                         logError("Division by zero error: " . $e->getMessage(), "ERROR", [
                             'file' => $e->getFile(),
@@ -391,7 +266,7 @@ try {
                 <p>Various debugging methods in PHP:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // 1. var_dump() - Display variable information
 $array = [1, 2, 3, 'test'];
 var_dump($array);
@@ -429,32 +304,27 @@ $startTime = microtime(true);
 $endTime = microtime(true);
 $executionTime = $endTime - $startTime;
 echo "Execution time: " . round($executionTime * 1000, 2) . " ms&lt;br&gt;";
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
                     <strong>Debugging Examples:</strong><br>
                     <?php
                     $array = [1, 2, 3, 'test'];
-                    
                     echo "<strong>var_dump() output:</strong><br>";
                     ob_start();
                     var_dump($array);
                     $varDumpOutput = ob_get_clean();
                     echo htmlspecialchars($varDumpOutput) . "<br>";
-                    
                     echo "<strong>print_r() output:</strong><br>";
-                    echo "<pre>" . print_r($array, true) . "</pre>";
-                    
+                    echo "<pre>" . htmlspecialchars(print_r($array, true)) . "</pre>";
                     function debug($data, $label = 'Debug') {
-                        echo "<div style='background: #f0f0f0; padding: 10px; margin: 10px 0; border: 1px solid #ccc;'>";
-                        echo "<strong>$label:</strong><br>";
-                        echo "<pre>" . print_r($data, true) . "</pre>";
+                        echo "<div style='background: #37474F; color: #FAFAFA; padding: 10px; margin: 10px 0; border: 1px solid #80CBC4;'>";
+                        echo "<strong>" . htmlspecialchars($label) . ":</strong><br>";
+                        echo "<pre>" . htmlspecialchars(print_r($data, true)) . "</pre>";
                         echo "</div>";
                     }
-                    
                     debug($array, 'Sample Array');
-                    
                     $startTime = microtime(true);
                     // Simulate some work
                     usleep(100000); // 0.1 seconds
@@ -470,7 +340,7 @@ echo "Execution time: " . round($executionTime * 1000, 2) . " ms&lt;br&gt;";
                 <p>Let's create a comprehensive error handling system:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Custom error handler class
 class ErrorHandler {
     private $logFile;
@@ -538,7 +408,7 @@ class ErrorHandler {
 $errorHandler = new ErrorHandler();
 set_error_handler([$errorHandler, 'handleError']);
 set_exception_handler([$errorHandler, 'handleException']);
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -546,27 +416,21 @@ set_exception_handler([$errorHandler, 'handleException']);
                     <?php
                     class ErrorHandler {
                         private $logFile;
-                        
                         public function __construct($logFile = 'errors.log') {
                             $this->logFile = $logFile;
                         }
-                        
                         public function handleError($errno, $errstr, $errfile, $errline) {
                             $errorType = $this->getErrorType($errno);
                             $message = "[$errorType] $errstr in $errfile on line $errline";
-                            
-                            echo "<div style='color: red;'>$message</div>";
+                            echo "<div style='color: #FF5252;'>" . htmlspecialchars($message) . "</div>";
                             return true;
                         }
-                        
                         public function handleException($exception) {
                             $message = "Exception: " . $exception->getMessage() . 
                                       " in " . $exception->getFile() . 
                                       " on line " . $exception->getLine();
-                            
-                            echo "<div style='color: red;'>$message</div>";
+                            echo "<div style='color: #FF5252;'>" . htmlspecialchars($message) . "</div>";
                         }
-                        
                         private function getErrorType($errno) {
                             switch ($errno) {
                                 case E_ERROR: return 'ERROR';
@@ -576,14 +440,12 @@ set_exception_handler([$errorHandler, 'handleException']);
                             }
                         }
                     }
-
                     $errorHandler = new ErrorHandler();
                     set_error_handler([$errorHandler, 'handleError']);
                     set_exception_handler([$errorHandler, 'handleException']);
-                    
-                    // Test the error handler
+                    // Test the error handler (safe demonstration)
                     echo "Testing error handler:<br>";
-                    $undefined_variable; // This will trigger a notice
+                    @trigger_error("This is a test notice", E_USER_NOTICE);
                     ?>
                 </div>
             </div>

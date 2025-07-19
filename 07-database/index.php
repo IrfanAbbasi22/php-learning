@@ -4,139 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Database Operations</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        .error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        .success {
-            background: #d4edda;
-            border: 1px solid #c3e6c3;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -157,7 +25,7 @@
                 <p>PHP provides several ways to connect to databases. The most common are MySQLi and PDO. Let's explore both:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi Connection
 $mysqli = new mysqli('localhost', 'username', 'password', 'database_name');
 
@@ -173,7 +41,7 @@ try {
 } catch(PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -194,7 +62,7 @@ try {
                 <p>Let's create some example tables for our learning:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Create users table
 $createUsersTable = "
 CREATE TABLE users (
@@ -219,7 +87,7 @@ CREATE TABLE posts (
 // Execute the queries
 $mysqli->query($createUsersTable);
 $mysqli->query($createPostsTable);
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -245,7 +113,7 @@ $mysqli->query($createPostsTable);
                 <p>Adding data to the database:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi INSERT
 $username = "john_doe";
 $email = "john@example.com";
@@ -256,7 +124,7 @@ $stmt = $mysqli->prepare($sql);
 $stmt->bind_param("sss", $username, $email, $password);
 
 if ($stmt->execute()) {
-    echo "User created successfully. ID: " . $mysqli->insert_id . "&lt;br&gt;";
+    echo "User inserted successfully&lt;br&gt;";
 } else {
     echo "Error: " . $stmt->error . "&lt;br&gt;";
 }
@@ -268,13 +136,13 @@ try {
     $stmt->execute([
         ':username' => 'jane_doe',
         ':email' => 'jane@example.com',
-        ':password' => password_hash('password456', PASSWORD_DEFAULT)
+        ':password' => password_hash("password456", PASSWORD_DEFAULT)
     ]);
-    echo "User created successfully. ID: " . $pdo->lastInsertId() . "&lt;br&gt;";
+    echo "User inserted with PDO&lt;br&gt;";
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage() . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -293,7 +161,7 @@ try {
                 <p>Retrieving data from the database:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi SELECT
 $sql = "SELECT id, username, email, created_at FROM users";
 $result = $mysqli->query($sql);
@@ -318,7 +186,7 @@ try {
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage() . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -351,7 +219,7 @@ try {
                 <p>Modifying existing data:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi UPDATE
 $newEmail = "john.updated@example.com";
 $userId = 1;
@@ -378,7 +246,7 @@ try {
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage() . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -396,7 +264,7 @@ try {
                 <p>Removing data from the database:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi DELETE
 $userId = 3;
 
@@ -419,7 +287,7 @@ try {
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage() . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -437,7 +305,7 @@ try {
                 <p>Combining data from multiple tables:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // INNER JOIN - Get posts with user information
 $sql = "
 SELECT p.id, p.title, p.content, u.username, p.created_at 
@@ -471,7 +339,7 @@ if ($result->num_rows > 0) {
         echo $row["username"] . " has " . $row["post_count"] . " posts&lt;br&gt;";
     }
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -507,7 +375,7 @@ if ($result->num_rows > 0) {
                 <p>Using prepared statements to prevent SQL injection:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // MySQLi Prepared Statement
 $username = $_POST['username'] ?? '';
 $email = $_POST['email'] ?? '';
@@ -533,7 +401,7 @@ try {
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage() . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">

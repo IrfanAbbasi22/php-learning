@@ -4,83 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Functions</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .example {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .example h4 {
-            margin-top: 0;
-            color: #856404;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -103,10 +27,10 @@
                 <div class="example">
                     <h4>Basic Function Structure:</h4>
                     <div class="code-block">
-function functionName($parameter1, $parameter2) {
+<pre><code>function functionName($parameter1, $parameter2) {
     // Function code here
     return $result;
-}
+}</code></pre>
                     </div>
                 </div>
             </div>
@@ -116,7 +40,7 @@ function functionName($parameter1, $parameter2) {
                 <p>Let's start with simple functions that don't take parameters:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Simple function with no parameters
 function sayHello() {
     echo "Hello, World!&lt;br&gt;";
@@ -140,7 +64,7 @@ function countToThree() {
 sayHello();
 echo "Current time: " . getCurrentTime() . "&lt;br&gt;";
 countToThree();
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -174,7 +98,7 @@ countToThree();
                 <p>Functions can accept parameters (arguments) to make them more flexible:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Function with one parameter
 function greet($name) {
     echo "Hello, $name!&lt;br&gt;";
@@ -201,7 +125,7 @@ echo "Sum: " . add(5, 3) . "&lt;br&gt;";
 greetWithDefault();
 greetWithDefault("Alice");
 echo "Product: " . multiply(4, 6) . "&lt;br&gt;";
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -237,7 +161,7 @@ echo "Product: " . multiply(4, 6) . "&lt;br&gt;";
                 <p>Functions can work with arrays and return multiple values:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Function that processes an array
 function calculateStats($numbers) {
     $sum = array_sum($numbers);
@@ -255,7 +179,7 @@ function calculateStats($numbers) {
     ];
 }
 
-// Function that filters an array
+// Function that filters array
 function filterEvenNumbers($numbers) {
     $evenNumbers = [];
     foreach ($numbers as $number) {
@@ -266,22 +190,16 @@ function filterEvenNumbers($numbers) {
     return $evenNumbers;
 }
 
-// Test data
-$testNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// Using the functions
+$numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+$stats = calculateStats($numbers);
+$evenNumbers = filterEvenNumbers($numbers);
 
-// Calculate statistics
-$stats = calculateStats($testNumbers);
-echo "Statistics:&lt;br&gt;";
+echo "Numbers: " . implode(", ", $numbers) . "&lt;br&gt;";
 echo "Sum: " . $stats['sum'] . "&lt;br&gt;";
-echo "Count: " . $stats['count'] . "&lt;br&gt;";
-echo "Average: " . round($stats['average'], 2) . "&lt;br&gt;";
-echo "Max: " . $stats['max'] . "&lt;br&gt;";
-echo "Min: " . $stats['min'] . "&lt;br&gt;";
-
-// Filter even numbers
-$evenNumbers = filterEvenNumbers($testNumbers);
-echo "Even numbers: " . implode(', ', $evenNumbers) . "&lt;br&gt;";
-?&gt;
+echo "Average: " . $stats['average'] . "&lt;br&gt;";
+echo "Even numbers: " . implode(", ", $evenNumbers) . "&lt;br&gt;";
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -313,18 +231,14 @@ echo "Even numbers: " . implode(', ', $evenNumbers) . "&lt;br&gt;";
                         return $evenNumbers;
                     }
 
-                    $testNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                    $numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+                    $stats = calculateStats($numbers);
+                    $evenNumbers = filterEvenNumbers($numbers);
 
-                    $stats = calculateStats($testNumbers);
-                    echo "Statistics:<br>";
+                    echo "Numbers: " . implode(", ", $numbers) . "<br>";
                     echo "Sum: " . $stats['sum'] . "<br>";
-                    echo "Count: " . $stats['count'] . "<br>";
-                    echo "Average: " . round($stats['average'], 2) . "<br>";
-                    echo "Max: " . $stats['max'] . "<br>";
-                    echo "Min: " . $stats['min'] . "<br>";
-
-                    $evenNumbers = filterEvenNumbers($testNumbers);
-                    echo "Even numbers: " . implode(', ', $evenNumbers) . "<br>";
+                    echo "Average: " . $stats['average'] . "<br>";
+                    echo "Even numbers: " . implode(", ", $evenNumbers) . "<br>";
                     ?>
                 </div>
             </div>
@@ -334,21 +248,21 @@ echo "Even numbers: " . implode(', ', $evenNumbers) . "&lt;br&gt;";
                 <p>Understanding how variables work inside and outside functions:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Global variable
 $globalVar = "I'm global";
 
-// Function with local scope
 function testScope() {
+    // Local variable
     $localVar = "I'm local";
-    echo "Inside function: $localVar&lt;br&gt;";
+    echo "Local: $localVar&lt;br&gt;";
     
     // Access global variable
     global $globalVar;
-    echo "Global variable: $globalVar&lt;br&gt;";
+    echo "Global: $globalVar&lt;br&gt;";
 }
 
-// Function with static variable
+// Static variable
 function counter() {
     static $count = 0;
     $count++;
@@ -356,15 +270,14 @@ function counter() {
 }
 
 // Test scope
-echo "Outside function: $globalVar&lt;br&gt;";
 testScope();
+echo "Outside function - Global: $globalVar&lt;br&gt;";
 
 // Test static variable
-echo "&lt;br&gt;Static variable test:&lt;br&gt;";
 counter();
 counter();
 counter();
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -373,23 +286,27 @@ counter();
                     $globalVar = "I'm global";
 
                     function testScope() {
+                        // Local variable
                         $localVar = "I'm local";
-                        echo "Inside function: $localVar<br>";
+                        echo "Local: $localVar<br>";
                         
+                        // Access global variable
                         global $globalVar;
-                        echo "Global variable: $globalVar<br>";
+                        echo "Global: $globalVar<br>";
                     }
 
+                    // Static variable
                     function counter() {
                         static $count = 0;
                         $count++;
                         echo "Count: $count<br>";
                     }
 
-                    echo "Outside function: $globalVar<br>";
+                    // Test scope
                     testScope();
+                    echo "Outside function - Global: $globalVar<br>";
 
-                    echo "<br>Static variable test:<br>";
+                    // Test static variable
                     counter();
                     counter();
                     counter();
@@ -402,69 +319,53 @@ counter();
                 <p>Functions that call themselves (useful for complex algorithms):</p>
                 
                 <div class="code-block">
-&lt;?php
-// Recursive function to calculate factorial
+<pre><code>&lt;?php
+// Recursive function - factorial
 function factorial($n) {
-    if ($n <= 1) {
-        return 1;
-    }
+    if ($n <= 1) return 1;
     return $n * factorial($n - 1);
 }
 
-// Recursive function to calculate Fibonacci
+// Recursive function - fibonacci
 function fibonacci($n) {
-    if ($n <= 1) {
-        return $n;
-    }
+    if ($n <= 1) return $n;
     return fibonacci($n - 1) + fibonacci($n - 2);
 }
 
-// Recursive function to count array elements
+// Recursive function - count array elements
 function countArray($array) {
-    if (empty($array)) {
-        return 0;
-    }
+    if (empty($array)) return 0;
     return 1 + countArray(array_slice($array, 1));
 }
 
 // Test recursive functions
 echo "Factorial of 5: " . factorial(5) . "&lt;br&gt;";
 echo "Fibonacci(6): " . fibonacci(6) . "&lt;br&gt;";
-
-$testArray = [1, 2, 3, 4, 5];
-echo "Array count: " . countArray($testArray) . "&lt;br&gt;";
-?&gt;
+echo "Array count: " . countArray([1, 2, 3, 4, 5]) . "&lt;br&gt;";
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
                     <strong>Output:</strong><br>
                     <?php
                     function factorial($n) {
-                        if ($n <= 1) {
-                            return 1;
-                        }
+                        if ($n <= 1) return 1;
                         return $n * factorial($n - 1);
                     }
 
                     function fibonacci($n) {
-                        if ($n <= 1) {
-                            return $n;
-                        }
+                        if ($n <= 1) return $n;
                         return fibonacci($n - 1) + fibonacci($n - 2);
                     }
 
                     function countArray($array) {
-                        if (empty($array)) {
-                            return 0;
-                        }
+                        if (empty($array)) return 0;
                         return 1 + countArray(array_slice($array, 1));
                     }
 
                     echo "Factorial of 5: " . factorial(5) . "<br>";
                     echo "Fibonacci(6): " . fibonacci(6) . "<br>";
-
-                    $testArray = [1, 2, 3, 4, 5];
-                    echo "Array count: " . countArray($testArray) . "<br>";
+                    echo "Array count: " . countArray([1, 2, 3, 4, 5]) . "<br>";
                     ?>
                 </div>
             </div>

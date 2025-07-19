@@ -94,10 +94,54 @@ php-learning/
 - **Error Handling**: Database error management
 
 ### 8. Object-Oriented PHP (`08-oop/`)
-- **Classes and Objects**: Creating and using classes
-- **Properties and Methods**: Class members
-- **Inheritance**: Extending classes
-- **Encapsulation**: Public, private, protected
+
+#### Prerequisites for OOP
+Before diving into Object-Oriented Programming, ensure you have mastered:
+- **PHP Basics**: Variables, data types, operators, and basic syntax
+- **Functions**: Function creation, parameters, return values, and scope
+- **Arrays**: Working with indexed and associative arrays
+- **Control Structures**: If statements, loops, and switch cases
+- **Error Handling**: Basic try-catch and error management
+- **File Operations**: Reading and writing files
+
+#### Fundamental OOP Concepts:
+- **Classes and Objects**: Blueprints and instances
+- **Properties and Methods**: Data and behaviors
+- **Constructors**: Object initialization
+- **Access Modifiers**: Public, private, protected
+
+#### Advanced OOP Concepts:
+- **Inheritance**: Parent-child class relationships
+- **Encapsulation**: Data hiding and bundling
+- **Polymorphism**: Multiple forms of methods
+- **Abstract Classes**: Base classes that cannot be instantiated
+- **Interfaces**: Contracts that classes must follow
+- **Static Methods/Properties**: Class-level members
+- **Magic Methods**: Special PHP methods
+
+#### Design Principles:
+- **SOLID Principles**: Best practices for OOP design
+- **Code Reusability**: Writing maintainable code
+- **Separation of Concerns**: Organizing code logically
+
+#### Small Project Ideas to Improve OOP Skills:
+- **Calculator Class**: Different operations as methods
+- **Book Library**: Categories and borrowing system
+- **Bank Account System**: Multiple account types with different interest rates
+- **Student Management**: Track students, courses, and grades
+- **Online Store**: Products, categories, shopping cart, and orders
+- **Blog System**: Posts, comments, users, and categories
+- **Task Manager**: Projects, tasks, priorities, and deadlines
+- **Contact Manager**: Store contacts with different types
+- **File Manager**: Organize files with different types and permissions
+- **Quiz System**: Questions, answers, categories, and scoring
+
+#### Advanced Project Ideas:
+- **MVC Framework**: Build a simple MVC structure
+- **ORM System**: Create a basic Object-Relational Mapping
+- **Plugin System**: Design an extensible plugin architecture
+- **Event System**: Implement an event-driven architecture
+- **Factory Pattern**: Create objects using factory methods
 
 ### 9. Error Handling (`09-error-handling/`)
 - **Try-Catch Blocks**: Exception handling
@@ -107,8 +151,9 @@ php-learning/
 
 ### 10. Projects (`10-projects/`)
 - **Todo App**: Complete CRUD application with sessions
-- **Blog System**: Simple blog with posts and comments
-- **Contact Form**: Form with email functionality
+- **Contact Form**: Form with email functionality and validation
+- **Library Management**: Advanced OOP project with inheritance, abstraction, and polymorphism
+- **Bank Management**: Complex OOP system with interfaces, abstract classes, and design patterns
 
 ## 🎯 Key Features
 

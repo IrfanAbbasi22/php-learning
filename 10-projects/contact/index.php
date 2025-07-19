@@ -49,13 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
         
         $emailBody = "
-        <h2>Contact Form Submission</h2>
-        <p><strong>Name:</strong> " . htmlspecialchars($name) . "</p>
-        <p><strong>Email:</strong> " . htmlspecialchars($email) . "</p>
-        <p><strong>Subject:</strong> " . htmlspecialchars($subject) . "</p>
-        <p><strong>Message:</strong></p>
-        <p>" . nl2br(htmlspecialchars($message)) . "</p>
-        <p><strong>Submitted:</strong> " . date('Y-m-d H:i:s') . "</p>
+        &lt;h3&gt;Contact Form Submission&lt;/h3&gt;
+        &lt;p&gt;&lt;strong&gt;Name:&lt;/strong&gt; " . htmlspecialchars($name) . "&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Email:&lt;/strong&gt; " . htmlspecialchars($email) . "&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Subject:&lt;/strong&gt; " . htmlspecialchars($subject) . "&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Message:&lt;/strong&gt;&lt;/p&gt;
+        &lt;p&gt;" . nl2br(htmlspecialchars($message)) . "&lt;/p&gt;
         ";
         
         // In a real application, you would use:
@@ -87,134 +86,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Form - PHP Learning</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: 300;
-        }
-        .content {
-            padding: 30px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            font-size: 16px;
-            box-sizing: border-box;
-            transition: border-color 0.3s ease;
-        }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s ease;
-        }
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        .btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-        }
-        .message {
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .message.success {
-            background: #d4edda;
-            border: 1px solid #c3e6c3;
-            color: #155724;
-        }
-        .message.error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .contact-info {
-            background: #f8f9fa;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        .contact-info h3 {
-            margin-top: 0;
-            color: #333;
-        }
-        .contact-info p {
-            margin: 10px 0;
-            color: #666;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Contact Form - PHP Project</title>
+    <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
     <div class="container">

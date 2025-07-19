@@ -4,119 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Forms & User Input</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        .form-group input, .form-group select, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .error {
-            color: #dc3545;
-            font-size: 14px;
-            margin-top: 5px;
-        }
-        .success {
-            background: #d4edda;
-            border: 1px solid #c3e6c3;
-            color: #155724;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -258,23 +146,23 @@
                 <p>When handling form data, always follow these security practices:</p>
                 
                 <div class="code-block">
-                    <?php
-                        // 1. Always validate and sanitize input
-                        $username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
+<pre><code>&lt;?php
+// 1. Always validate and sanitize input
+$username = filter_var($_POST['username'], FILTER_SANITIZE_STRING);
 
-                        // 2. Use prepared statements for database queries
-                        $stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
-                        $stmt->execute([$username]);
+// 2. Use prepared statements for database queries
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->execute([$username]);
 
-                        // 3. Escape output to prevent XSS
-                        echo htmlspecialchars($user_input);
+// 3. Escape output to prevent XSS
+echo htmlspecialchars($user_input);
 
-                        // 4. Use CSRF tokens for forms
-                        session_start();
-                        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-                            die('CSRF token validation failed');
-                        }
-                    ?>
+// 4. Use CSRF tokens for forms
+session_start();
+if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    die('CSRF token validation failed');
+}
+?&gt;</code></pre>
                 </div>
 
                 <h3>Key Security Points:</h3>

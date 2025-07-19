@@ -4,125 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP File Operations</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: #333;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-        .btn {
-            background: #667eea;
-            color: white;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-right: 10px;
-        }
-        .btn:hover {
-            background: #5a6fd8;
-        }
-        .file-info {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .file-info h3 {
-            margin-top: 0;
-            color: #333;
-        }
-        .error {
-            background: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 15px 0;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -166,7 +48,7 @@
                 <p>There are several ways to read files in PHP:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Method 1: file_get_contents() - Read entire file into string
 $content = file_get_contents('example.txt');
 echo "File content: $content&lt;br&gt;";
@@ -195,7 +77,7 @@ if ($handle) {
     }
     fclose($handle);
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -223,7 +105,7 @@ if ($handle) {
                 <p>PHP provides various methods to write data to files:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Method 1: file_put_contents() - Write entire content at once
 $data = "Hello, this is some data to write to a file.\n";
 file_put_contents('output.txt', $data);
@@ -246,7 +128,7 @@ if ($handle) {
     fwrite($handle, "This line is appended.\n");
     fclose($handle);
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -278,7 +160,7 @@ if ($handle) {
                 <p>PHP provides functions to get information about files and directories:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 $filename = 'example.txt';
 
 // Check if file exists
@@ -308,7 +190,7 @@ if (is_dir($dir)) {
         }
     }
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -345,7 +227,7 @@ if (is_dir($dir)) {
                 <p>Working with directories in PHP:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Create a directory
 if (!is_dir('test_directory')) {
     mkdir('test_directory', 0755);
@@ -393,7 +275,7 @@ function removeDirectory($dir) {
         rmdir($dir);
     }
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -510,7 +392,7 @@ function removeDirectory($dir) {
                 <p>Advanced file operations:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Copy a file
 copy('source.txt', 'destination.txt');
 
@@ -535,7 +417,7 @@ chmod('example.txt', 0644);
 // Get file owner
 $owner = posix_getpwuid(fileowner('example.txt'));
 echo "File owner: " . $owner['name'] . "&lt;br&gt;";
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">

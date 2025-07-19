@@ -4,83 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Basics - Variables & Data Types</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background: #f5f5f5;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        .content {
-            padding: 30px;
-        }
-        .section {
-            margin-bottom: 40px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            padding: 20px;
-        }
-        .section h2 {
-            color: #333;
-            border-bottom: 2px solid #667eea;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-        .output {
-            background: #e8f5e8;
-            border: 1px solid #c3e6c3;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .nav {
-            background: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-        }
-        .nav a {
-            color: #667eea;
-            text-decoration: none;
-            margin-right: 20px;
-        }
-        .nav a:hover {
-            text-decoration: underline;
-        }
-        .example {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 5px;
-            padding: 15px;
-            margin: 15px 0;
-        }
-        .example h4 {
-            margin-top: 0;
-            color: #856404;
-        }
-    </style>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
@@ -104,10 +28,10 @@
                 <div class="example">
                     <h4>Basic PHP Structure:</h4>
                     <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // This is a PHP comment
 echo "Hello, World!";
-?&gt;
+?&gt;</code></pre>
                     </div>
                 </div>
             </div>
@@ -117,19 +41,19 @@ echo "Hello, World!";
                 <p>Variables in PHP start with a dollar sign ($) and can store different types of data.</p>
                 
                 <div class="code-block">
-                        &lt;?php
-                        // Variable declaration
-                        $name = "John";
-                        $age = 25;
-                        $height = 5.9;
-                        $isStudent = true;
+<pre><code>&lt;?php
+// Variable declaration
+$name = "John";
+$age = 25;
+$height = 5.9;
+$isStudent = true;
 
-                        // Displaying variables
-                        echo "Name: " . $name . "&lt;br&gt;";
-                        echo "Age: " . $age . "&lt;br&gt;";
-                        echo "Height: " . $height . "&lt;br&gt;";
-                        echo "Is Student: " . ($isStudent ? "Yes" : "No") . "&lt;br&gt;";
-                        ?&gt;
+// Displaying variables
+echo "Name: " . $name . "&lt;br&gt;";
+echo "Age: " . $age . "&lt;br&gt;";
+echo "Height: " . $height . "&lt;br&gt;";
+echo "Is Student: " . ($isStudent ? "Yes" : "No") . "&lt;br&gt;";
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -153,7 +77,7 @@ echo "Hello, World!";
                 <p>PHP supports several data types. Here are the most common ones:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // String
 $text = "Hello World";
 echo "String: " . $text . "&lt;br&gt;";
@@ -179,7 +103,7 @@ echo "Array: " . implode(", ", $colors) . "&lt;br&gt;";
 // Null
 $empty = null;
 echo "Null: " . (is_null($empty) ? "null" : "not null") . "&lt;br&gt;";
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -213,7 +137,7 @@ echo "Null: " . (is_null($empty) ? "null" : "not null") . "&lt;br&gt;";
                 <p>PHP uses the dot (.) operator to concatenate strings:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 $firstName = "John";
 $lastName = "Doe";
 $fullName = $firstName . " " . $lastName;
@@ -222,7 +146,7 @@ echo "Full Name: " . $fullName . "&lt;br&gt;";
 // Using double quotes for variable interpolation
 echo "Hello, $firstName!&lt;br&gt;";
 echo "Welcome, {$firstName} {$lastName}!&lt;br&gt;";
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
@@ -244,33 +168,30 @@ echo "Welcome, {$firstName} {$lastName}!&lt;br&gt;";
                 <p>Arrays can store multiple values. PHP supports both indexed and associative arrays:</p>
                 
                 <div class="code-block">
-&lt;?php
+<pre><code>&lt;?php
 // Indexed array
 $fruits = ["apple", "banana", "orange"];
 echo "Fruits: " . implode(", ", $fruits) . "&lt;br&gt;";
-echo "First fruit: " . $fruits[0] . "&lt;br&gt;";
 
 // Associative array
 $person = [
     "name" => "John",
-    "age" => 25,
+    "age" => 30,
     "city" => "New York"
 ];
-echo "Name: " . $person["name"] . "&lt;br&gt;";
-echo "Age: " . $person["age"] . "&lt;br&gt;";
-echo "City: " . $person["city"] . "&lt;br&gt;";
+echo "Person: " . $person["name"] . " is " . $person["age"] . " years old.&lt;br&gt;";
 
 // Multidimensional array
 $students = [
-    ["name" => "John", "grade" => 85],
-    ["name" => "Jane", "grade" => 92],
-    ["name" => "Bob", "grade" => 78]
+    ["name" => "Alice", "grade" => 85],
+    ["name" => "Bob", "grade" => 92],
+    ["name" => "Charlie", "grade" => 78]
 ];
 
 foreach ($students as $student) {
-    echo $student["name"] . " - Grade: " . $student["grade"] . "&lt;br&gt;";
+    echo $student["name"] . " got " . $student["grade"] . "&lt;br&gt;";
 }
-?&gt;
+?&gt;</code></pre>
                 </div>
 
                 <div class="output">
